@@ -31,7 +31,9 @@ class CustomButton extends StatelessWidget {
             //     MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 17)),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(28),
-                side: BorderSide(color: Colors.white, width: 1)))),
+                side: BorderSide(
+                    color: isBlue == false ? Colors.white : Color(0xff246BFD),
+                    width: 1)))),
       ),
     );
   }

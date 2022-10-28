@@ -29,6 +29,13 @@ class OnBordingPage extends StatelessWidget {
             ),
           ]),
         ),
+        Expanded(
+          child: Container(
+            color: Colors.red,
+            margin: EdgeInsets.only(top: 36, bottom: 36),
+            child: Placeholder(),
+          ),
+        ),
         CustomButton(buttonText: "Sign Up", isBlue: true),
         CustomButton(buttonText: "Login", isBlue: false)
       ],
