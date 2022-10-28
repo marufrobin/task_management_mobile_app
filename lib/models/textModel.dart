@@ -5,7 +5,7 @@ class TextModel {
 
   static List<TextModel> scriptData() {
     return [
-      TextModel("Update Progress \n Your Work for The \n Team"),
+      TextModel("Update Progress \nYour Work for The \nTeam"),
       TextModel("Create a Task and Assign it to Your Team Members"),
       TextModel("Get Notified when you Get a New Assignment"),
     ];
