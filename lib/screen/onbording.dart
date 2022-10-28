@@ -14,7 +14,20 @@ class OnBordingPage extends StatefulWidget {
 
 class _OnBordingPageState extends State<OnBordingPage> {
   final topPageScript = TextModel.scriptData();
+  PageController _pageController = PageController();
+  // PageController pageController2 = PageController();
   var _isSlected = 0;
+  @override
+  void initState() {
+    _pageController.addListener(() {
+      setState(() {
+        _isSlected = _pageController.page!.toInt();
+        print("Page Number: ${_isSlected}");
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,17 +52,13 @@ class _OnBordingPageState extends State<OnBordingPage> {
           ]),
         ),
         slidingTextView(),
-        SizedBox(
-          height: 10,
-          // width: 116,
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
           child: Row(
-            children: [
-              ListView.builder(
-                  // scrollDirection: Axis.horizontal,
-                  itemCount: topPageScript.length,
-                  itemBuilder: ((context, index) => indicatorOfPageChange(
-                      isActive: _isSlected == index ? true : false)))
-            ],
+            children: List.generate(
+                topPageScript.length,
+                (index) => indicatorOfPageChange(
+                    isActive: _isSlected == index ? true : false)),
           ),
         ),
         CustomButton(buttonText: "Sign Up", isBlue: true),
@@ -60,20 +69,17 @@ class _OnBordingPageState extends State<OnBordingPage> {
 
   slidingTextView() {
     return Container(
-      height: 200,
+      height: 180,
       // color: Colors.red,
-      margin: EdgeInsets.only(top: 36, bottom: 36),
+      // margin: EdgeInsets.only(
+      //   top: 36,
+      // ),
       child: PageView.builder(
+          controller: _pageController,
           scrollDirection: Axis.horizontal,
           itemCount: topPageScript.length,
-          onPageChanged: ((value) {
-            setState(() {
-              _isSlected = value;
-            });
-          }),
           itemBuilder: (context, index) {
             var topPage = topPageScript;
-
             return Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -81,14 +87,14 @@ class _OnBordingPageState extends State<OnBordingPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    color: Colors.red,
-                    // margin: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(16),
                     child: Text(
                       topPage[index].script,
                       style: TextStyle(
                           fontSize: 36,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "Nunito"),
+                          fontFamily: "Nunito",
+                          color: Color(0xffE4E4E6)),
                     ),
                   ),
                 ],
@@ -98,8 +104,10 @@ class _OnBordingPageState extends State<OnBordingPage> {
     );
   }
 
-  Container indicatorOfPageChange({required bool isActive}) {
-    return Container(
+  AnimatedContainer indicatorOfPageChange({required bool isActive}) {
+    return AnimatedContainer(
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 32),
+      duration: Duration(milliseconds: 250),
       width: isActive ? 48 : 24,
       height: 8,
       decoration: BoxDecoration(
@@ -108,3 +116,4 @@ class _OnBordingPageState extends State<OnBordingPage> {
     );
   }
 }
+//
