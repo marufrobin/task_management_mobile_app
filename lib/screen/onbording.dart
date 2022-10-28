@@ -1,10 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:task_management_mobile_app/models/textModel.dart';
 import 'package:task_management_mobile_app/widgets/custom_button.dart';
 
 class OnBordingPage extends StatelessWidget {
-  const OnBordingPage({Key? key}) : super(key: key);
+  OnBordingPage({Key? key}) : super(key: key);
+  final topPageScript = TextModel.scriptData();
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +32,27 @@ class OnBordingPage extends StatelessWidget {
             ),
           ]),
         ),
-        Expanded(
-          child: Container(
-            color: Colors.red,
-            margin: EdgeInsets.only(top: 36, bottom: 36),
-            child: Placeholder(),
-          ),
-        ),
+        slidingTextView(),
         CustomButton(buttonText: "Sign Up", isBlue: true),
         CustomButton(buttonText: "Login", isBlue: false)
       ],
+    );
+  }
+
+  Expanded slidingTextView() {
+    return Expanded(
+      child: Container(
+        color: Colors.red,
+        margin: EdgeInsets.only(top: 36, bottom: 36),
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 6,
+            itemBuilder: (context, index) {
+              return Container(
+                  // color: Colors.red,
+                  );
+            }),
+      ),
     );
   }
 }
