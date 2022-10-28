@@ -42,15 +42,34 @@ class OnBordingPage extends StatelessWidget {
   Expanded slidingTextView() {
     return Expanded(
       child: Container(
-        color: Colors.red,
+        height: double.infinity,
+        // color: Colors.red,
         margin: EdgeInsets.only(top: 36, bottom: 36),
-        child: ListView.builder(
+        child: PageView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 6,
+            itemCount: topPageScript.length,
             itemBuilder: (context, index) {
+              var topPage = topPageScript;
+
               return Container(
-                  // color: Colors.red,
-                  );
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    Container(
+                      color: Colors.red,
+                      // margin: EdgeInsets.all(20),
+                      child: Text(
+                        topPage[index].script,
+                        style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Nunito"),
+                      ),
+                    ),
+                  ],
+                ),
+              );
             }),
       ),
     );
