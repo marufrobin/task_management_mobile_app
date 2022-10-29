@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   String buttonText;
   bool isBlue;
-
-  CustomButton({required this.buttonText, required this.isBlue});
+  VoidCallback? navigatorPage;
+  CustomButton(
+      {required this.buttonText, required this.isBlue, this.navigatorPage});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +15,15 @@ class CustomButton extends StatelessWidget {
       // padding: EdgeInsets.symmetric(horizontal: 340, vertical: 56),
       margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: ElevatedButton(
-        onPressed: (() {}),
+        onPressed: navigatorPage != null ? navigatorPage : (() {}),
         child: Center(
           child: Text(
             "${buttonText}",
             style: TextStyle(
                 fontFamily: "Nunito",
                 fontSize: 17,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeight.w600,
+                color: Colors.white),
           ),
         ),
         style: ButtonStyle(

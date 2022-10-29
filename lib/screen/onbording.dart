@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:task_management_mobile_app/models/textModel.dart';
+import 'package:task_management_mobile_app/screen/login_page.dart';
+import 'package:task_management_mobile_app/screen/singUpPage.dart';
 import 'package:task_management_mobile_app/widgets/custom_button.dart';
 
 class OnBordingPage extends StatefulWidget {
@@ -63,8 +65,17 @@ class _OnBordingPageState extends State<OnBordingPage> {
                       isActive: _isSlected == index ? true : false)),
             ),
           ),
-          CustomButton(buttonText: "Sign Up", isBlue: true),
-          CustomButton(buttonText: "Login", isBlue: false)
+          CustomButton(
+            buttonText: "Sign Up",
+            isBlue: true,
+            navigatorPage: (() => Navigator.of(context)
+                .push(MaterialPageRoute(builder: ((context) => SignUpPage())))),
+          ),
+          CustomButton(
+              buttonText: "Login",
+              isBlue: false,
+              navigatorPage: (() => Navigator.of(context).push(
+                  MaterialPageRoute(builder: ((context) => LoginPage())))))
         ],
       ),
     );
