@@ -30,46 +30,49 @@ class _OnBordingPageState extends State<OnBordingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Stack(children: [
-            Positioned(
-              top: -184,
-              child: Transform.rotate(
-                angle: pi / 4,
-                child: Container(
-                  // transform: Matrix4.,
-                  height: 400,
-                  width: 480,
-                  decoration: BoxDecoration(
-                    color: Color(0xff8E8E93),
-                    borderRadius: BorderRadius.circular(40),
+    return Scaffold(
+      backgroundColor: Color(0xff191A22),
+      body: Column(
+        children: [
+          Expanded(
+            child: Stack(children: [
+              Positioned(
+                top: -184,
+                child: Transform.rotate(
+                  angle: pi / 4,
+                  child: Container(
+                    // transform: Matrix4.,
+                    height: 400,
+                    width: 480,
+                    decoration: BoxDecoration(
+                      color: Color(0xff8E8E93),
+                      borderRadius: BorderRadius.circular(40),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ]),
-        ),
-        slidingTextView(),
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: Row(
-            children: List.generate(
-                topPageScript.length,
-                (index) => indicatorOfPageChange(
-                    isActive: _isSlected == index ? true : false)),
+            ]),
           ),
-        ),
-        CustomButton(buttonText: "Sign Up", isBlue: true),
-        CustomButton(buttonText: "Login", isBlue: false)
-      ],
+          slidingTextView(),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Row(
+              children: List.generate(
+                  topPageScript.length,
+                  (index) => indicatorOfPageChange(
+                      isActive: _isSlected == index ? true : false)),
+            ),
+          ),
+          CustomButton(buttonText: "Sign Up", isBlue: true),
+          CustomButton(buttonText: "Login", isBlue: false)
+        ],
+      ),
     );
   }
 
   slidingTextView() {
     return Container(
-      height: 180,
+      height: 160,
       // color: Colors.red,
       // margin: EdgeInsets.only(
       //   top: 36,
@@ -87,7 +90,8 @@ class _OnBordingPageState extends State<OnBordingPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(16),
+                    // padding: EdgeInsets.all(16),
+                    padding: EdgeInsets.only(left: 16, bottom: 2),
                     child: Text(
                       topPage[index].script,
                       style: TextStyle(
