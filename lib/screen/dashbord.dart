@@ -243,193 +243,203 @@ class DashBordPage extends StatelessWidget {
                 Positioned(
                     bottom: 30,
                     left: 170,
-                    child: CircleAvatar(
-                      child: Icon(
-                        Icons.add,
-                        size: 30,
+                    child: GestureDetector(
+                      onTap: (() {
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return buildBottomSheet();
+                            });
+                      }),
+                      child: CircleAvatar(
+                        child: Icon(
+                          Icons.add,
+                          size: 30,
+                        ),
+                        radius: 32,
                       ),
-                      radius: 32,
                     )),
               ],
             )
           ],
         ),
-        bottomSheet: Container(
-          height: 620,
-          color: Color(0xff292B3E),
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Add New Project",
-                      style: buildTextStyle(
-                          clr: Colors.white,
-                          fntSize: 20,
-                          fntWit: FontWeight.bold),
-                    ),
-                    buildTextBeforeTF(script: "Project Name"),
-                    TextFormField(
-                      // controller: _emailController,
-                      style: TextStyle(
-                          fontFamily: "Nunito",
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff8A8A8E)),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(bottom: 16),
-                        prefixIcon: Container(
-                          padding: EdgeInsets.only(
-                              left: 16, right: 16, top: 16, bottom: 16),
-                          child: SvgPicture.asset(
-                            "assets/project.svg",
-                            fit: BoxFit.cover,
-                            height: 24,
-                            width: 24,
-                          ),
-                        ),
-                        // labelText: "Email",
-                        hintText: "Enter project name ",
-                        hintStyle: TextStyle(
-                            fontFamily: "Nunito",
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff8A8A8E)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xff8E8E93), width: 2),
-                            borderRadius: BorderRadius.circular(28)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(28)),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    buildTextBeforeTF(script: "Assigned to"),
-                    TextFormField(
-                      // controller: _passwordController,
-                      style: TextStyle(
-                          fontFamily: "Nunito",
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff8A8A8E)),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16, bottom: 16),
-                        prefixIcon: Container(
-                            padding: EdgeInsets.only(
-                                left: 16, right: 16, top: 16, bottom: 16),
-                            child: Icon(
-                              Icons.person_add_alt,
-                              color: Color(0xff8A8A8E),
-                            )),
-                        // labelText: "Email",
-                        hintText: "Select Your Team",
-                        hintStyle: TextStyle(
-                            fontFamily: "Nunito",
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff8A8A8E)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xff8E8E93), width: 2),
-                            borderRadius: BorderRadius.circular(28)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(28)),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    buildTextBeforeTF(script: "Progress"),
-                    TextFormField(
-                      // controller: _passwordController,
-                      style: TextStyle(
-                          fontFamily: "Nunito",
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff8A8A8E)),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16, bottom: 16),
-                        prefixIcon: Container(
-                            padding: EdgeInsets.only(
-                                left: 16, right: 16, top: 16, bottom: 16),
-                            child: Icon(
-                              Icons.fact_check_outlined,
-                              color: Color(0xff8A8A8E),
-                            )),
-                        // labelText: "Email",
-                        hintText: "Ongoing",
-                        hintStyle: TextStyle(
-                            fontFamily: "Nunito",
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff8A8A8E)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xff8E8E93), width: 2),
-                            borderRadius: BorderRadius.circular(28)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(28)),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    buildTextBeforeTF(script: "TimeLine"),
-                    TextFormField(
-                      // controller: _passwordController,
-                      style: TextStyle(
-                          fontFamily: "Nunito",
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff8A8A8E)),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16, bottom: 16),
-                        prefixIcon: Container(
-                            padding: EdgeInsets.only(
-                                left: 16, right: 16, top: 16, bottom: 16),
-                            child: Icon(
-                              Icons.calendar_today_outlined,
-                              color: Color(0xff8A8A8E),
-                            )),
-                        // labelText: "Email",
-                        hintText: "2 March 2021",
-                        hintStyle: TextStyle(
-                            fontFamily: "Nunito",
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff8A8A8E)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xff8E8E93), width: 2),
-                            borderRadius: BorderRadius.circular(28)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(28)),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          "assets/Link.svg",
-                          width: 24,
-                          height: 24,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        buildTextBeforeTF(
-                            script: "Attach File", clr: Colors.white),
-                      ],
-                    )
-                  ],
+      ),
+    );
+  }
+
+  Container buildBottomSheet() {
+    return Container(
+      height: 620,
+      color: Color(0xff292B3E),
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-              CustomButton(buttonText: "Login", isBlue: true),
-            ],
+                Text(
+                  "Add New Project",
+                  style: buildTextStyle(
+                      clr: Colors.white, fntSize: 20, fntWit: FontWeight.bold),
+                ),
+                buildTextBeforeTF(script: "Project Name"),
+                TextFormField(
+                  // controller: _emailController,
+                  style: TextStyle(
+                      fontFamily: "Nunito",
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff8A8A8E)),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(bottom: 16),
+                    prefixIcon: Container(
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, top: 16, bottom: 16),
+                      child: SvgPicture.asset(
+                        "assets/project.svg",
+                        fit: BoxFit.cover,
+                        height: 24,
+                        width: 24,
+                      ),
+                    ),
+                    // labelText: "Email",
+                    hintText: "Enter project name ",
+                    hintStyle: TextStyle(
+                        fontFamily: "Nunito",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff8A8A8E)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xff8E8E93), width: 2),
+                        borderRadius: BorderRadius.circular(28)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(28)),
+                  ),
+                ),
+                SizedBox(height: 16),
+                buildTextBeforeTF(script: "Assigned to"),
+                TextFormField(
+                  // controller: _passwordController,
+                  style: TextStyle(
+                      fontFamily: "Nunito",
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff8A8A8E)),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(top: 16, bottom: 16),
+                    prefixIcon: Container(
+                        padding: EdgeInsets.only(
+                            left: 16, right: 16, top: 16, bottom: 16),
+                        child: Icon(
+                          Icons.person_add_alt,
+                          color: Color(0xff8A8A8E),
+                        )),
+                    // labelText: "Email",
+                    hintText: "Select Your Team",
+                    hintStyle: TextStyle(
+                        fontFamily: "Nunito",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff8A8A8E)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xff8E8E93), width: 2),
+                        borderRadius: BorderRadius.circular(28)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(28)),
+                  ),
+                ),
+                SizedBox(height: 16),
+                buildTextBeforeTF(script: "Progress"),
+                TextFormField(
+                  // controller: _passwordController,
+                  style: TextStyle(
+                      fontFamily: "Nunito",
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff8A8A8E)),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(top: 16, bottom: 16),
+                    prefixIcon: Container(
+                        padding: EdgeInsets.only(
+                            left: 16, right: 16, top: 16, bottom: 16),
+                        child: Icon(
+                          Icons.fact_check_outlined,
+                          color: Color(0xff8A8A8E),
+                        )),
+                    // labelText: "Email",
+                    hintText: "Ongoing",
+                    hintStyle: TextStyle(
+                        fontFamily: "Nunito",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff8A8A8E)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xff8E8E93), width: 2),
+                        borderRadius: BorderRadius.circular(28)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(28)),
+                  ),
+                ),
+                SizedBox(height: 16),
+                buildTextBeforeTF(script: "TimeLine"),
+                TextFormField(
+                  // controller: _passwordController,
+                  style: TextStyle(
+                      fontFamily: "Nunito",
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff8A8A8E)),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(top: 16, bottom: 16),
+                    prefixIcon: Container(
+                        padding: EdgeInsets.only(
+                            left: 16, right: 16, top: 16, bottom: 16),
+                        child: Icon(
+                          Icons.calendar_today_outlined,
+                          color: Color(0xff8A8A8E),
+                        )),
+                    // labelText: "Email",
+                    hintText: "2 March 2021",
+                    hintStyle: TextStyle(
+                        fontFamily: "Nunito",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff8A8A8E)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xff8E8E93), width: 2),
+                        borderRadius: BorderRadius.circular(28)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(28)),
+                  ),
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/Link.svg",
+                      width: 24,
+                      height: 24,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    buildTextBeforeTF(script: "Attach File", clr: Colors.white),
+                  ],
+                )
+              ],
+            ),
           ),
-        ),
+          CustomButton(buttonText: "Login", isBlue: true),
+        ],
       ),
     );
   }
