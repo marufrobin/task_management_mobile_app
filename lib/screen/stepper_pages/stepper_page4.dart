@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:task_management_mobile_app/screen/stepper_pages/stepper_page5.dart';
 
 import '../../widgets/custom_button.dart';
 
@@ -75,7 +76,12 @@ class StepperPage4 extends StatelessWidget {
             ),
           ),
           Spacer(),
-          CustomButton(buttonText: "Continue", isBlue: true),
+          CustomButton(
+              buttonText: "Continue",
+              isBlue: true,
+              navigatorPage: (() => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => StepperPage5()),
+                  ))),
         ],
       ),
     );

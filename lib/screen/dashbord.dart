@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:task_management_mobile_app/models/listModel.dart';
 import 'package:task_management_mobile_app/models/task_progress_data.dart';
+import 'package:task_management_mobile_app/screen/team_member.dart';
 
 import '../widgets/custom_button.dart';
 
@@ -22,7 +23,13 @@ class DashBordPage extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildCustomAppBar(),
+            GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TeamMember(),
+                  ));
+                },
+                child: buildCustomAppBar()),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text("Project Task",

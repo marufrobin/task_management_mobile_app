@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:task_management_mobile_app/screen/stepper_pages/stepper_page2.dart';
 
 import '../../widgets/custom_button.dart';
 
-class StepperPage1 extends StatelessWidget {
+class StepperPage1 extends StatefulWidget {
   StepperPage1({Key? key}) : super(key: key);
+
+  @override
+  State<StepperPage1> createState() => _StepperPage1State();
+}
+
+class _StepperPage1State extends State<StepperPage1> {
   TextEditingController _emailController = TextEditingController();
+
   TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -15,6 +23,11 @@ class StepperPage1 extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+            onPressed: (() {
+              Navigator.pop(context);
+            }),
+            icon: Icon(Icons.arrow_back_ios)),
       ),
       body: Column(
         children: [
@@ -123,7 +136,12 @@ class StepperPage1 extends StatelessWidget {
               ],
             ),
           ),
-          CustomButton(buttonText: "Continue", isBlue: true),
+          CustomButton(
+            buttonText: "Continue",
+            isBlue: true,
+            navigatorPage: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => StepperPage2())),
+          ),
         ],
       ),
     );

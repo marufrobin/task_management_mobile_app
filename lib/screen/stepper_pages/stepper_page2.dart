@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task_management_mobile_app/screen/stepper_pages/stepper_page3.dart';
+import 'package:task_management_mobile_app/screen/stepper_pages/stepper_page4.dart';
 import 'package:task_management_mobile_app/widgets/custom_button.dart';
 
 class StepperPage2 extends StatelessWidget {
@@ -15,7 +17,13 @@ class StepperPage2 extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(height: 16),
-          CustomButton(buttonText: "Create Your Own Team", isBlue: true),
+          CustomButton(
+            buttonText: "Create Your Own Team",
+            isBlue: true,
+            navigatorPage: (() => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => StepperPage3(),
+                ))),
+          ),
           Container(
             margin: EdgeInsets.only(bottom: 16),
             child: Text(
@@ -27,7 +35,12 @@ class StepperPage2 extends StatelessWidget {
                   color: Color(0xffF8F8F8)),
             ),
           ),
-          CustomButton(buttonText: "Join Team", isBlue: false)
+          CustomButton(
+              buttonText: "Join Team",
+              isBlue: false,
+              navigatorPage: (() => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => StepperPage4()),
+                  ))),
         ],
       ),
     );

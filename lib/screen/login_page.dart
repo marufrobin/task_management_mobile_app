@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:task_management_mobile_app/screen/singUpPage.dart';
 import 'package:task_management_mobile_app/widgets/custom_button.dart';
 
 class LoginPage extends StatelessWidget {
@@ -12,9 +13,30 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff191A22),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+              onPressed: (() {
+                Navigator.pop(context);
+              }),
+              icon: Icon(Icons.arrow_back_ios)),
+          actions: [
+            TextButton(
+                onPressed: (() {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpPage(),
+                      ));
+                }),
+                child: Text(
+                  "Sign UP",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      color: Colors.white),
+                ))
+          ]),
       body: Column(
         children: [
           Container(

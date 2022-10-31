@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:task_management_mobile_app/screen/stepper_pages/stepper_page1.dart';
 
 import '../widgets/custom_button.dart';
 
@@ -15,6 +16,28 @@ class SignUpPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+            onPressed: (() {
+              Navigator.pop(context);
+            }),
+            icon: Icon(Icons.arrow_back_ios)),
+        actions: [
+          TextButton(
+              onPressed: (() {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SignUpPage(),
+                    ));
+              }),
+              child: Text(
+                "Sign UP",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: Colors.white),
+              ))
+        ],
       ),
       body: Column(
         children: [
@@ -62,7 +85,13 @@ class SignUpPage extends StatelessWidget {
               ],
             ),
           ),
-          CustomButton(buttonText: "Continue", isBlue: true),
+          CustomButton(
+            buttonText: "Continue",
+            isBlue: true,
+            navigatorPage: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => StepperPage1(),
+            )),
+          ),
         ],
       ),
     );
