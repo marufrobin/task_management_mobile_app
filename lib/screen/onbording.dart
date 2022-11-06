@@ -122,7 +122,7 @@ class _OnBordingPageState extends State<OnBordingPage> {
   AnimatedContainer indicatorOfPageChange({required bool isActive}) {
     return AnimatedContainer(
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 32),
-      duration: Duration(milliseconds: 250),
+      duration: Duration(milliseconds: 160),
       width: isActive ? 48 : 24,
       height: 8,
       decoration: BoxDecoration(
